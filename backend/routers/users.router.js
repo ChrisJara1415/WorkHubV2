@@ -1,12 +1,11 @@
 import { Router } from 'express'
 import {createUser, getUsers, getUserById, updateUser, deleteUser} from '../controllers/users.controller.js'
-import validateApiKey from '../middlewares/apiKey.middleware.js'
 const router = Router()
 
-router.get('/', validateApiKey, getUsers)
-router.post('/', validateApiKey, createUser)
-router.get('/:id', validateApiKey, getUserById)
-router.patch('/:id', validateApiKey, updateUser)
-router.delete('/:id', validateApiKey, deleteUser)
+router.get('/', getUsers)
+router.post('/', createUser)
+router.get('/:id', getUserById)
+router.patch('/:id', updateUser)
+router.delete('/:id', deleteUser)
 
 export default router
