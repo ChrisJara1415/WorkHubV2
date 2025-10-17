@@ -29,7 +29,22 @@
                 <section class="py-5" style="background:#f3f7fb;">
                     <div class="container">
                         <h2 class="h4 text-center mb-4">Categorías Populares</h2>
-                        <div class="row g-3 justify-content-center" id="categoriesGrid"></div>
+                        <div id="categoriesGrid" class="row">
+                            <% categorias.forEach(cate=> { %>
+                                <div class="col-6 col-md-4 col-lg-2">
+                                    <button class="w-100 btn btn-light py-3 shadow-sm category-btn" type="button"
+                                        data-category="<%= cate.name %>">
+                                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-2"
+                                            style="width:42px;height:42px;background:#eef4fb;">
+                                            <i class="bi <%= cate.icon %>"></i>
+                                        </div>
+                                        <div class="fw-semibold">
+                                            <%= cate.name %>
+                                        </div>
+                                    </button>
+                                </div>
+                                <% }); %>
+                        </div>
                     </div>
                 </section>
 
