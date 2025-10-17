@@ -17,3 +17,10 @@ export async function offers(req, res) {
         res.status(500).render('pages/offers', { categorias: CATEGORIES, offers: [], title: 'Ofertas Disponibles', error: 'No se pudo cargar las ofertas' })
     }
 }
+
+export function formatDate(dateInput) {
+    if (!dateInput) return '-'
+    const date = new Date(dateInput)
+    if (isNaN(date)) return '-'
+    return date.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric'})
+}
