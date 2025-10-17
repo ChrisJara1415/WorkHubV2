@@ -1,19 +1,19 @@
 /* Fuentes */
 @font-face {
   font-family: afacad;
-  src: url(/fonts/Afacad-VariableFont_wght.woff2) format("woff2");
+  src: url(/static/fonts/Afacad-VariableFont_wght.woff2) format("woff2");
   font-weight: 100 900;
 }
 
 @font-face {
   font-family: publicSans;
-  src: url(/fonts/PublicSans-VariableFont_wght.woff2) format("woff2");
+  src: url(/static/fonts/PublicSans-VariableFont_wght.woff2) format("woff2");
   font-weight: 100 900;
 }
 
 @font-face {
   font-family: rubik;
-  src: url(/fonts/Rubik-VariableFont_wght.woff2) format("woff2");
+  src: url(/static/fonts/Rubik-VariableFont_wght.woff2) format("woff2");
   font-weight: 100 900;
 }
 /* Variables fuentes */
