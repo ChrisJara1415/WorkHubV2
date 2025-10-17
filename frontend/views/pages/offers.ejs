@@ -92,7 +92,70 @@
                             </div>
                         </div>
 
-                        <div id="offers" class="row g-3" aria-live="polite"></div>
+                        <div id="offers" class="row g-3" aria-live="polite">
+                            <% if (offers && offers.length) { %>
+                                <% offers.forEach(function(off) { %>
+                                    <% 
+                                        const img=(Array.isArray(off.imagenes) && off.imagenes.length> 0)
+                                            ? off.imagenes[0]
+                                            : '/img/oficios/jardin.jpg';
+                                        const empleador = (off.empleador && off.empleador.nombre) ? off.empleador.nombre
+                                        : 'Empleador';
+                                    %>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                                            <div class="card h-100 shadow-sm">
+                                                <div class="w-100">
+                                                    <img src="<%= img %>" class="card-img-fixed"
+                                                        alt="<%= off.nombreServicio %>">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                                        <h5 class="card-title mb-0">
+                                                            <%= off.nombreServicio %>
+                                                        </h5>
+                                                        <span class="badge text-bg-light border">
+                                                            <%= off.categoria %>
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center gap-2 text-muted small mb-2">
+                                                        <i class="bi bi-person-circle"></i>
+                                                        <span>
+                                                            <%= empleador %>
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex flex-wrap gap-3 small text-muted mb-2">
+                                                        <span><i class="bi bi-geo-alt"></i>
+                                                            <%= off.municipio?.nombre || '—' %>
+                                                        </span>
+                                                        <span><i class="bi bi-cash"></i>
+                                                            <%= (off.precioReferencia !=null) ? off.precioReferencia
+                                                                : '-' %>
+                                                        </span>
+                                                        <span><i class="bi bi-calendar-event"></i> Hasta: <%=
+                                                                off.fechaLimite ?? '-' %></span>
+                                                    </div>
+                                                    <p class="mb-3 text-truncate"
+                                                        style="-webkit-line-clamp:2; display:-webkit-box; -webkit-box-orient:vertical;">
+                                                        <%= off.descripcion %>
+                                                    </p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted">Publicado: <%= off.fechaCreacion
+                                                                ?? '-' %>
+                                                        </small>
+                                                        <button class="btn btn-warning" type="button" data-offer-id="<%= off._id %>">Ver
+                                                            detalles</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }); %>
+                                            <% } else { %>
+                                                <div class="col-12">
+                                                    <p class="text-muted text-center my-4">No hay ofertas disponibles.
+                                                    </p>
+                                                </div>
+                                                <% } %>
+                        </div>
                     </div>
                 </section>
 
