@@ -22,5 +22,5 @@ export function formatDate(dateInput) {
     if (!dateInput) return '-'
     const date = new Date(dateInput)
     if (isNaN(date)) return '-'
-    return date.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric'})
+    return date.toLocaleDateString('es-CO', { day: '2-digit', month: 'long', year: 'numeric'})
 }
