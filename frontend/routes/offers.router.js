@@ -1,9 +1,8 @@
 import express from 'express'
-import { landingPage } from '../controllers/landingPage.controller.js'
 import { offers } from '../controllers/offers.controller.js'
 
 const router = express.Router()
 
-router.get('/', landingPage)
+router.get('/ofertas', offers)
 
 export default router
