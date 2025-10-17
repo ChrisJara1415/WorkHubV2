@@ -3,6 +3,6 @@ import { offers } from '../controllers/offers.controller.js'
 
 const router = express.Router()
 
-router.get('/ofertas', offers)
+router.get('/', offers)
 
 export default router
