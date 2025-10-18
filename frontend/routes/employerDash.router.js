@@ -1,8 +1,8 @@
 import express from 'express'
-import { employer } from '../controllers/employerDash.controller' 
+import { employer } from '../controllers/employerDash.controller.js' 
 
 const router = express.Router()
 
-router.get('/empleador', employer)
+router.get('/', employer)
 
-export default router
+export default router   
