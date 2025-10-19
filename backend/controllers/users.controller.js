@@ -1,5 +1,6 @@
 import user from '../models/users.model.js'
 import contracts from '../models/contracts.model.js'
+import jwt from 'jsonwebtoken'
 
 export const createUser = async (req, res) => {
     try {
@@ -65,4 +66,13 @@ export const deleteUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: `Error al eliminar usuario ${error.message}` });
     }
+}
+
+export async function login(req, res) {
+    const { email, password } = req.body
+    const user = await user.findById({ email })
+    if ( !user || !(await bcrypt.compare(password, user.password))) {
+        return res.status(401).json({ message: 'Credenciales inválidas' })
+    }
+    const token = jwt.sign({ id: user._id }, 'key')
 }
