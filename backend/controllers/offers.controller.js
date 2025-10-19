@@ -6,20 +6,6 @@ export const createOffer = async (req, res) => {
         const { empleador, municipio, nombreServicio, descripcion, categoria, precioReferencia, personasRequeridas, detalleRequerimiento, visible, fechaCreacion, fechaLimite } = req.body
         const nuevaOferta = new offers({ empleador, municipio, nombreServicio, descripcion, categoria, precioReferencia, personasRequeridas, detalleRequerimiento, visible, fechaCreacion, fechaLimite })
         await nuevaOferta.save()
-
-        // Promover automáticamente a empleador si era empleado 
-        if (empleador?.idUsuario) {
-            try {
-                await user.updateOne(
-                    { _id: empleador.idUsuario, rol: 'empleado' },
-                    { $set: { rol: 'empleador' } },
-                    { runValidators: false }
-                )
-            } catch (e) {
-                res.status(400).json({ message: "No se ha podido actualizar el rol del empleado", error: e.message })
-            }
-        }
-
         res.status(201).json({ message: 'Oferta creada satisfactoriamente', data: nuevaOferta })
     } catch (error) {
         res.status(500).json({ success: false, message: 'Error al crear oferta', error: error.message })
@@ -28,11 +14,8 @@ export const createOffer = async (req, res) => {
 
 export const searchOffers = async (req, res) => {
     try {
-        const total = await offers.countDocuments()
         const ofertasEncontradas = await offers.find()
-        res.status(200).json({
-            data: ofertasEncontradas, total
-        })
+        res.status(200).json(ofertasEncontradas)
     } catch (error) {
         res.status(500).json({ message: 'No se han encontrado ofertas', error: error.message })
     }
