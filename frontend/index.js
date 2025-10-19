@@ -3,6 +3,7 @@ import employerDash from './routes/employerDash.router.js'
 import landingPage from './routes/landingPage.router.js'
 import offersRoutes from './routes/offers.router.js'
 import applymentsRoutes from './routes/applyments.router.js'
+import login from './routes/login.router.js'
 import path from 'path'
 import morgan from 'morgan'
 process.loadEnvFile('../.env')
@@ -20,5 +21,6 @@ app.use('/', landingPage)
 app.use('/ofertas', offersRoutes)
 app.use('/empleador', employerDash)
 app.use('/postulaciones', applymentsRoutes)
+app.use('/login', login)
 
 app.listen(PORT, () => console.log(`Frontend escuchando en http://localhost:${PORT}`))
